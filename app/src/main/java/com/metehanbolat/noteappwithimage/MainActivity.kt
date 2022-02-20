@@ -37,6 +37,10 @@ class MainActivity : AppCompatActivity() {
             myViewModel.insertPerson(person)
         }
 
+        myViewModel.readPerson.observe(this) {
+            adapter.setData(it)
+        }
+
     }
 
     private suspend fun getBitmap(): Bitmap {
