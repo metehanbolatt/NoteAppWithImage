@@ -5,8 +5,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
-import android.graphics.drawable.BitmapDrawable
-import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,14 +15,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import coil.ImageLoader
-import coil.request.ImageRequest
-import coil.request.SuccessResult
 import com.google.android.material.snackbar.Snackbar
 import com.metehanbolat.noteappwithimage.databinding.ActivityMainBinding
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
-    var selectedPicture : Bitmap? = null
+    private var selectedPicture : Bitmap? = null
 
     private val adapter by lazy { MyAdapter() }
     private lateinit var myViewModel: MyViewModel
@@ -56,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.selectImage.setOnLongClickListener {
             selectedPicture?.let { bitmap ->
-                val person = Person("Metahan", "Bolat", bitmap)
+                val person = Person("Bruce", "Wayne", bitmap)
                 myViewModel.insertPerson(person)
             }
             true

@@ -3,7 +3,6 @@ package com.metehanbolat.noteappwithimage
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.metehanbolat.noteappwithimage.databinding.RowLayoutBinding
 
 class MyAdapter: RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
@@ -21,7 +20,7 @@ class MyAdapter: RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
         holder.binding.apply {
             userName.text = person[position].firstName
             userSurname.text = person[position].lastName
-            userImage.load(person[position].profilePhoto)
+            userImage.setImageBitmap(person[position].profilePhoto)
         }
     }
 
